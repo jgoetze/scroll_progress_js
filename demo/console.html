@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="buffer"></div>
+
+<div class="wrapper">
+    <div class="slide">
+        THE SLIDE (see console output)
+    </div>
+</div>
+
+<div class="buffer"></div>
+
+
+<script src="../js/scroll-progress.js"></script>
+<script>
+
+    let scroll_progress = new ScrollProgress(document.querySelector('.wrapper'));
+    scroll_progress.onScroll = function(scroll_progress) {
+
+        // DEMO SCRIPT
+        console.log("percentage", scroll_progress.percentage, scroll_progress.__percentage);
+        // DEMO SCRIPT
+
+    }
+
+</script>
+</body>
+</html>

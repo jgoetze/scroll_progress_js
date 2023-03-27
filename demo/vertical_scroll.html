@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="assets/style.css">
+
+    <style>
+        .demo-box {
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .demo-box div {
+            display: inline-block;
+            margin-left: 100px;
+            height: 33vh;
+            margin-top: 33vh;
+            text-align: center;
+            padding: 50px;
+            box-sizing: border-box;
+            background: yellow;
+            width: 400px;
+        }
+
+        .demo-box div:first-child {
+            margin-left: 90vw;
+        }
+
+        .demo-box div:last-child {
+            margin-right: 50vw;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="buffer"></div>
+
+<div class="wrapper">
+    <div class="slide">
+        <div class="demo-box">
+            <div>Content 1</div>
+            <div>Content 2</div>
+            <div>Content 3</div>
+            <div>Content 4</div>
+            <div>Content 5</div>
+            <div>Content 6</div>
+            <div>Content 7</div>
+            <div>Content 8</div>
+            <div>Content 9</div>
+            <div>Content 10</div>
+            <div>Content 11</div>
+        </div>
+    </div>
+</div>
+
+<div class="buffer"></div>
+
+
+<script src="../js/scroll-progress.js"></script>
+<script>
+
+    let scroll_progress = new ScrollProgress(document.querySelector('.wrapper'));
+    scroll_progress.onScroll = function(scroll_progress) {
+
+        // DEMO SCRIPT
+        let wrapper = document.querySelector('.demo-box');
+        wrapper.scrollLeft = wrapper.scrollWidth * scroll_progress.percentage;
+        // DEMO SCRIPT
+
+    }
+
+</script>
+</body>
+</html>
