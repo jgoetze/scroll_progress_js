@@ -8,16 +8,15 @@ body {
     height: 50vh;
     width: 100%;
     background: black;
+    position: relative;
 }
 
 .wrapper {
     background: yellow;
-    height: 500vh;
     position: relative;
 }
 
 .slide {
-    background: red;
     height: 100vh;
     width: 100%;
     top: -1px;

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="assets/style.css">
+
+    <style>
+        .video-cover {
+            background: pink;
+            position: relative;
+        }
+
+        .video-background {
+            background: darkblue;
+            line-height: 0;
+        }
+
+        .video-background video {
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            position: fixed;
+        }
+
+        .video-overlay {
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            position: fixed;
+        }
+
+        .video-overlay-content .__bg {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            height: 100vh;
+            width: 100vw;
+            transition: bottom 1s;
+            background: transparent url("assets/wave.png") bottom right no-repeat;
+            background-size: cover;
+        }
+
+        .video-overlay-content .__box {
+            background: #fff;
+            line-height: 1.3;
+            padding: 10px 30px;
+            border-radius: 30px;
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            width: 30vw;
+            transition: bottom 2s;
+        }
+
+        .__extracted {
+            bottom: -100vh !important;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="video-cover wrapper" style="height: 250vh;">
+    <div class="video-background">
+        <video id="video" autoplay muted loop>
+            <source src="assets/video.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="video-overlay">
+
+        <div class="video-overlay-content">
+            <div class="__bg">
+            </div>
+            <div class="__box">
+                <h1>
+                    Lorem Ipsum
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="buffer"></div>
+<div class="buffer"></div>
+<div class="buffer"></div>
+<div class="buffer"></div>
+<div class="buffer"></div>
+
+<script src="../js/scroll-progress.js"></script>
+<script>
+
+    let scroll_progress = new ScrollProgress(document.querySelector('.wrapper'));
+    scroll_progress.onScroll = function(scroll_progress) {
+
+        let wave = document.querySelector('.video-overlay-content .__bg');
+        let box = document.querySelector('.video-overlay-content .__box');
+
+        // DEMO SCRIPT
+        if (scroll_progress.percentage < 0.5) {
+            wave.classList.remove('__extracted');
+            box.classList.remove('__extracted');
+
+            wave.style.transform = "translateY(" + (scroll_progress.percentage * 80) +"%)";
+        } else {
+            wave.classList.add('__extracted');
+            box.classList.add('__extracted');
+        }
+        // DEMO SCRIPT
+
+    }
+
+</script>
+</body>
+</html>

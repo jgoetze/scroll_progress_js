@@ -38,7 +38,7 @@
 
 <div class="buffer"></div>
 
-<div class="wrapper">
+<div class="wrapper" style="height: 150vh;">
     <div class="slide">
         <div class="demo-box">
             <div>Content 1</div>
@@ -62,14 +62,18 @@
 <script src="../js/scroll-progress.js"></script>
 <script>
 
+    // DEMO SCRIPT
+    // set height automatically in order to work with dynamic scroll content
+    document.querySelector('.wrapper').style.height = document.querySelector('.demo-box').scrollWidth + "px";
+
     let scroll_progress = new ScrollProgress(document.querySelector('.wrapper'));
     scroll_progress.onScroll = function(scroll_progress) {
 
         // DEMO SCRIPT
-        let wrapper = document.querySelector('.demo-box');
-        wrapper.scrollLeft = wrapper.scrollWidth * scroll_progress.percentage;
+        let horizontal_wrapper = document.querySelector('.demo-box');
+        horizontal_wrapper.scrollLeft = (horizontal_wrapper.scrollWidth - horizontal_wrapper.offsetWidth) * scroll_progress.percentage;
         // DEMO SCRIPT
-
+        console.log(horizontal_wrapper.scrollWidth, scroll_progress.percentage);
     }
 
 </script>
