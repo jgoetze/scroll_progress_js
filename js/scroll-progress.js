@@ -36,8 +36,6 @@ class ScrollProgress {
         let wrapper_to   = this.element.offsetTop + this.element.offsetHeight - window.innerHeight
         let wrapper_height=  wrapper_to - wrapper_from
 
-        console.log(wrapper_from, wrapper_to);
-
         if (current_pos > wrapper_from && current_pos < wrapper_to) {
             this.__isInRange = true;
         } else {
@@ -49,6 +47,23 @@ class ScrollProgress {
         this.percentage = this.__percentage;
         if (this.__percentage < 0) this.percentage = 0.0;
         if (this.__percentage > 1) this.percentage = 1.0;
+    }
+
+    // returns the current index, based on the total index and the current percentage
+    percentageToIndex(index_count) {
+        let step_size = 100.0 / index_count / 100.0;
+
+        let compare = 1.0;
+        let current_index = index_count - 1;
+
+        while (compare > 0) {
+            if (this.percentage >= compare) return current_index;
+
+            compare -= step_size;
+            current_index--;
+        }
+
+        return 0;
     }
 
 }
