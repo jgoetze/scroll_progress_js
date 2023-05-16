@@ -53,7 +53,7 @@ class ScrollProgress {
     percentageToIndex(index_count) {
         let step_size = 100.0 / index_count / 100.0;
 
-        let compare = 1.0;
+        let compare = 1.0 - step_size;
         let current_index = index_count - 1;
 
         while (compare > 0) {
