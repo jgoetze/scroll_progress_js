@@ -11,6 +11,12 @@ class ScrollProgress {
         this.bind();
     }
 
+    setOnScroll(onScrollCallback) {
+        this.onScroll = onScrollCallback;
+        this.calculateState()
+        this.onScroll(this);
+    }
+
     bind() {
         window.addEventListener('scroll', () => {
             this.handleScroll();

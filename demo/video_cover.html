@@ -98,7 +98,7 @@
 <script>
 
     let scroll_progress = new ScrollProgress(document.querySelector('.wrapper'));
-    scroll_progress.onScroll = function(scroll_progress) {
+    scroll_progress.setOnScroll(function(scroll_progress) {
 
         let wave = document.querySelector('.video-overlay-content .__bg');
         let box = document.querySelector('.video-overlay-content .__box');
@@ -115,7 +115,8 @@
         }
         // DEMO SCRIPT
 
-    }
+    });
+
 
 </script>
 </body>
