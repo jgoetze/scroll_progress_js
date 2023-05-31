@@ -6,25 +6,41 @@ class ScrollProgress {
         this.__wasInRange = false;
         this.percentage = 0;
 
+        this.onSetup = function(scroll_progress) {};
         this.onScroll = function(scroll_progress) {};
 
         this.bind();
     }
 
+    setOnSetup(onSetupCallback) {
+        this.onSetup = onSetupCallback;
+        this.calculateState();
+        this.onSetup(this);
+    }
+
     setOnScroll(onScrollCallback) {
         this.onScroll = onScrollCallback;
-        this.calculateState()
+        this.calculateState();
         this.onScroll(this);
     }
 
     bind() {
+        document.addEventListener('DOMContentLoaded', () => {
+            this.handleSetup();
+        });
+
+        window.addEventListener("resize", () => {
+            this.handleSetup();
+        });
+
         window.addEventListener('scroll', () => {
             this.handleScroll();
-        })
-
-        document.addEventListener('DOMContentLoaded', () => {
-            this.handleScroll();
         });
+    }
+
+    handleSetup() {
+        this.calculateState();
+        this.onSetup(this);
     }
 
     handleScroll() {
