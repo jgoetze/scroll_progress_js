@@ -8,6 +8,7 @@ class ScrollProgress {
 
         this.onSetup = function(scroll_progress) {};
         this.onScroll = function(scroll_progress) {};
+        this.onGlobalScroll = function(scroll_progress) {};
 
         this.bind();
     }
@@ -45,11 +46,13 @@ class ScrollProgress {
 
     handleScroll() {
         this.calculateState();
+
         if (this.__isInRange || this.__wasInRange) {
             this.onScroll(this);
         }
-
         this.__wasInRange = this.__isInRange;
+
+        this.onGlobalScroll(this);
     }
 
     calculateState() {
