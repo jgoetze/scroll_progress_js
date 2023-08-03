@@ -25,6 +25,12 @@ class ScrollProgress {
         this.onScroll(this);
     }
 
+    setOnGlobalScroll(onGlobalScrollCallback) {
+        this.onGlobalScroll = onGlobalScrollCallback;
+        this.calculateState();
+        this.onGlobalScroll(this);
+    }
+
     bind() {
         document.addEventListener('DOMContentLoaded', () => {
             this.handleSetup();
